@@ -619,11 +619,11 @@ with torch.no_grad():
 slice_num = 67
 img_add = os.path.join(
     data_dir,
-    "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_t1ce.nii.gz",
+    "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-t1n.nii.gz",
 )
 label_add = os.path.join(
     data_dir,
-    "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_seg.nii.gz",
+    "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-seg.nii.gz",
 )
 img = nib.load(img_add).get_fdata()
 label = nib.load(label_add).get_fdata()
@@ -638,3 +638,17 @@ plt.subplot(1, 3, 3)
 plt.title("segmentation")
 plt.imshow(seg_out[:, :, slice_num])
 plt.show()
+
+
+
+
+
+
+#Cleanup data directory
+#Remove directory if a temporary was used.
+
+if directory is None:
+    shutil.rmtree(root_dir)
+
+
+
