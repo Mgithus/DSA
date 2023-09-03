@@ -415,13 +415,13 @@ if __name__ == "__main__":
 
     data_dir = "//home//dlrs//Desktop//swin unetr//short_DATA_for_swin_unetr"
     json_list = "//home//dlrs//Desktop//swin unetr//short_DATA_for_swin_unetr//brats21_folds_shortdata.json"
-    roi = (64, 64, 64)
+    roi = (128, 128, 128)
     batch_size = 1
     sw_batch_size = 1
     fold = 1
     infer_overlap = 0.5
-    max_epochs = 2
-    val_every = 2
+    max_epochs = 100
+    val_every = 10
     train_loader, val_loader = get_loader(batch_size, data_dir, json_list, fold, roi)
 
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -529,7 +529,7 @@ plt.show()
 
 
 
-
+/home/dlrs/Desktop/short_2023data/BraTS-GLI-00703-000/BraTS-GLI-00703-000-t1n.nii.gz
 
 
 #Create test set dataloader
@@ -540,24 +540,24 @@ test_files = [
         "image": [
             os.path.join(
                 data_dir,
-                "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_flair.nii.gz",
+                "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-t1n.nii.gz",
             ),
             os.path.join(
                 data_dir,
-                "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_t1ce.nii.gz",
+                "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-t1c.nii.gz",
             ),
             os.path.join(
                 data_dir,
-                "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_t1.nii.gz",
+                "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-t2f.nii.gz",
             ),
             os.path.join(
                 data_dir,
-                "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_t2.nii.gz",
+                "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-t2w.nii.gz",
             ),
         ],
         "label": os.path.join(
             data_dir,
-            "TrainingData/BraTS2021_" + case_num + "/BraTS2021_" + case_num + "_seg.nii.gz",
+            "ASNR-MICCAI-BraTS2023-GLI-Challenge-TrainingData/BraTS-GLI-" + case_num + "/BraTS-GLI-" + case_num + "-seg.nii.gz",
         ),
     }
 ]
@@ -576,7 +576,7 @@ test_loader = data.DataLoader(
     test_ds,
     batch_size=1,
     shuffle=False,
-    num_workers=8,
+    num_workers=4,
     pin_memory=True,
 )
 
