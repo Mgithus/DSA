@@ -29,7 +29,7 @@ from monai.metrics import DiceMetric
 from monai.networks.nets import SwinUNETR
 from monai.transforms import Activations, AsDiscrete, Compose
 from monai.utils.enums import MetricReduction
-
+from freeze import freeze_block 
 parser = argparse.ArgumentParser(description="Swin UNETR segmentation pipeline for BRATS Challenge")
 parser.add_argument("--checkpoint", default=None, help="start training from saved checkpoint")
 parser.add_argument("--logdir", default="test", type=str, help="directory to save the tensorboard logs")
@@ -174,7 +174,8 @@ def main_worker(gpu, args):
         if "best_acc" in checkpoint:
             best_acc = checkpoint["best_acc"]
         print("=> loaded checkpoint '{}' (epoch {}) (bestacc {})".format(args.checkpoint, start_epoch, best_acc))
-
+        
+    freeze_block(model, 'encoder2')
     model.cuda(args.gpu)
 
     if args.distributed:
