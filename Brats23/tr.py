@@ -124,7 +124,7 @@ def save_checkpoint(model, epoch, args, filename="model.pt", best_acc=0, optimiz
     print("Saving checkpoint", filename)
 
 
-def run_training(
+def train_run(
     model,
     train_loader,
     val_loader,
