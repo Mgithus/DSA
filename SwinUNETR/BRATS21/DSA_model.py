@@ -34,7 +34,7 @@ __all__ = [
 
 
 
-[docs]
+
 class SwinUNETR(nn.Module):
     """
     Swin UNETR based on: "Hatamizadeh et al.,
@@ -45,7 +45,7 @@ class SwinUNETR(nn.Module):
     patch_size: Final[int] = 2
 
 
-[docs]
+
     @deprecated_arg(
         name="img_size",
         since="1.3",
@@ -315,7 +315,7 @@ class SwinUNETR(nn.Module):
             )
 
 
-[docs]
+
     def forward(self, x_in):
         if not torch.jit.is_scripting():
             self._check_input_size(x_in.shape[2:])
