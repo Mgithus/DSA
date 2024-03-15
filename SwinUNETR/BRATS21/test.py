@@ -16,7 +16,7 @@ from functools import partial
 import nibabel as nib
 import numpy as np
 import torch
-from utils.data_utils import get_loader
+from UTS.dt_ut import gt_ld
 
 from monai.inferers import sliding_window_inference
 from monai.networks.nets import SwinUNETR
