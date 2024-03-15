@@ -64,12 +64,12 @@ def main():
     output_directory = "./outputs/" + args.exp_name
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
-    test_loader = get_loader(args)
+    test_loader = gt_ld(args)
     pretrained_dir = args.pretrained_dir
     model_name = args.pretrained_model_name
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     pretrained_pth = os.path.join(pretrained_dir, model_name)
-    model = SwinUNETR(
+    model = DSA(
         img_size=128,
         in_channels=args.in_channels,
         out_channels=args.out_channels,
