@@ -176,8 +176,7 @@ def main_worker(gpu, args):
         if "best_acc" in checkpoint:
             best_acc = checkpoint["best_acc"]
         print("=> loaded checkpoint '{}' (epoch {}) (bestacc {})".format(args.checkpoint, start_epoch, best_acc))
-        
-    freeze_block(model, 'encoder2')
+
     model.cuda(args.gpu)
 
     if args.distributed:
@@ -210,7 +209,7 @@ def main_worker(gpu, args):
 
     semantic_classes = ["Dice_Val_TC", "Dice_Val_WT", "Dice_Val_ET"]
 
-    accuracy = train_run(
+    accuracy = run_training(
         model=model,
         train_loader=loader[0],
         val_loader=loader[1],
