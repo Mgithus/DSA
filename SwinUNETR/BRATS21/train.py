@@ -30,6 +30,8 @@ from monai.networks.nets import SwinUNETR
 from monai.transforms import Activations, AsDiscrete, Compose
 from monai.utils.enums import MetricReduction
 from freeze import freeze_block 
+from DSA_model import DSA
+
 parser = argparse.ArgumentParser(description="Swin UNETR segmentation pipeline for BRATS Challenge")
 parser.add_argument("--checkpoint", default=None, help="start training from saved checkpoint")
 parser.add_argument("--logdir", default="test", type=str, help="directory to save the tensorboard logs")
