@@ -22,7 +22,7 @@ def dice(x, y):
     return 2 * intersect / (x_sum + y_sum)
 
 
-class AverageMeter(object):
+class AM(object):
     def __init__(self):
         self.reset()
 
@@ -39,7 +39,7 @@ class AverageMeter(object):
         self.avg = np.where(self.count > 0, self.sum / self.count, self.sum)
 
 
-def distributed_all_gather(
+def dag(
     tensor_list, valid_batch_size=None, out_numpy=False, world_size=None, no_barrier=False, is_valid=None
 ):
     if world_size is None:
