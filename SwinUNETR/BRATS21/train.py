@@ -21,7 +21,7 @@ import torch.nn.parallel
 import torch.utils.data.distributed
 from OPTIM.LWP_lrscheduler import LinearWarmupCosineAnnealingLR
 from trainer import run_training
-from UTS.dt_ut import get_loader
+from UTS.dt_ut import gt_ld
 
 from monai.inferers import sliding_window_inference
 from monai.losses import DiceLoss
