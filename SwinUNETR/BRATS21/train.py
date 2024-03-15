@@ -119,7 +119,7 @@ def main_worker(gpu, args):
     torch.cuda.set_device(args.gpu)
     torch.backends.cudnn.benchmark = True
     args.test_mode = False
-    loader = get_loader(args)
+    loader = gt_ld(args)
     print(args.rank, " gpu", args.gpu)
     if args.rank == 0:
         print("Batch size is:", args.batch_size, "epochs", args.max_epochs)
@@ -128,7 +128,7 @@ def main_worker(gpu, args):
     model_name = args.pretrained_model_name
     pretrained_pth = os.path.join(pretrained_dir, model_name)
 
-    model = SwinUNETR(
+    model = DSA(
         img_size=(args.roi_x, args.roi_y, args.roi_z),
         in_channels=args.in_channels,
         out_channels=args.out_channels,
