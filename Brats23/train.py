@@ -20,7 +20,7 @@ import torch.multiprocessing as mp
 import torch.nn.parallel
 import torch.utils.data.distributed
 from OPTIM.LWP_lrscheduler import LinearWarmupCosineAnnealingLR
-from tr import run_training
+from tr import train_run
 from UTS.dt_ut import gt_ld
 
 from monai.inferers import sliding_window_inference
@@ -210,7 +210,7 @@ def main_worker(gpu, args):
 
     semantic_classes = ["Dice_Val_TC", "Dice_Val_WT", "Dice_Val_ET"]
 
-    accuracy = run_training(
+    accuracy = train_run(
         model=model,
         train_loader=loader[0],
         val_loader=loader[1],
