@@ -28,7 +28,7 @@ from monai.data import decollate_batch
 def train_epoch(model, loader, optimizer, scaler, epoch, loss_func, args):
     model.train()
     start_time = time.time()
-    run_loss = AverageMeter()
+    run_loss = AM()
     for idx, batch_data in enumerate(loader):
         if isinstance(batch_data, list):
             data, target = batch_data
@@ -85,7 +85,7 @@ def val_epoch(model, loader, epoch, acc_func, args, model_inferer=None, post_sig
             acc, not_nans = acc_func.aggregate()
             acc = acc.cuda(args.rank)
             if args.distributed:
-                acc_list, not_nans_list = distributed_all_gather(
+                acc_list, not_nans_list = dag(
                     [acc, not_nans], out_numpy=True, is_valid=idx < loader.sampler.valid_length
                 )
                 for al, nl in zip(acc_list, not_nans_list):
