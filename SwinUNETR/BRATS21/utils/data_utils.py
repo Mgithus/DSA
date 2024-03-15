@@ -111,9 +111,9 @@ def get_loader(args):
             transforms.NormalizeIntensityd(keys="image", nonzero=True, channel_wise=True),
             transforms.RandScaleIntensityd(keys="image", factors=0.1, prob=1.0),
             transforms.RandShiftIntensityd(keys="image", offsets=0.1, prob=1.0),
-            transforms.RandElasticDeformd(keys=["image", "label"], sigma_range=(5, 8), magnitude_range=(1, 2), prob=0.3),  # Elastic deformation
-            transforms.RandAdjustContrastd(keys="image", factor_range=(0.5, 2.0), prob=0.3),  # Brightness augmentation
-            transforms.RandGammaTransformd(keys="image", gamma_range=(0.7, 1.5), prob=0.3),  # Increased gamma augmentation aggressiveness
+            #transforms.RandElasticDeformd(keys=["image", "label"], sigma_range=(5, 8), magnitude_range=(1, 2), prob=0.3),  # Elastic deformation
+            #transforms.RandAdjustContrastd(keys="image", factor_range=(0.5, 2.0), prob=0.3),  # Brightness augmentation
+            #transforms.RandGammaTransformd(keys="image", gamma_range=(0.7, 1.5), prob=0.3),  # Increased gamma augmentation aggressiveness
             transforms.ToTensord(keys=["image", "label"]),
         ]
     )
