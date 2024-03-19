@@ -29,7 +29,7 @@ from monai.metrics import DiceMetric
 from monai.networks.nets import SwinUNETR
 from monai.transforms import Activations, AsDiscrete, Compose
 from monai.utils.enums import MetricReduction
-from freeze import freeze_block 
+#from freeze import freeze_block 
 from DSA_model import DSA
 
 parser = argparse.ArgumentParser(description="Swin UNETR segmentation pipeline for BRATS Challenge")
@@ -209,7 +209,7 @@ def main_worker(gpu, args):
 
     semantic_classes = ["Dice_Val_TC", "Dice_Val_WT", "Dice_Val_ET"]
 
-    accuracy = run_training(
+    accuracy = train_run(
         model=model,
         train_loader=loader[0],
         val_loader=loader[1],
